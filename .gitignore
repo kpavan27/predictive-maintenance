@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-wheel-metadata/
+.installed.cfg
+*.egg-info/
+
+# Data
+data/processed/
+data/raw/
+dashboard/daily_kpis.csv
+dashboard/machine_kpis.csv
+dashboard/maintenance_schedule.csv
+
+# Models
+models/
+
+# Notebooks
+notebooks/
+
+# OS-specific
+.DS_Store
+
+# Archive
+archive/

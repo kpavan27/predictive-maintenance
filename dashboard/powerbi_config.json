@@ -1,0 +1,104 @@
+{
+  "dashboard_title": "Predictive Maintenance Dashboard",
+  "description": "Real-time monitoring of manufacturing equipment with AI-powered failure predictions",
+  "data_sources": [
+    {
+      "name": "Machine KPIs",
+      "file": "machine_kpis.csv",
+      "type": "CSV",
+      "description": "Machine-level performance metrics"
+    },
+    {
+      "name": "Daily KPIs",
+      "file": "daily_kpis.csv",
+      "type": "CSV",
+      "description": "Daily aggregated performance metrics"
+    },
+    {
+      "name": "Maintenance Schedule",
+      "file": "maintenance_schedule.csv",
+      "type": "CSV",
+      "description": "AI-recommended maintenance actions"
+    },
+    {
+      "name": "KPIs Summary",
+      "file": "kpis.json",
+      "type": "JSON",
+      "description": "Overall system KPIs"
+    }
+  ],
+  "visualizations": [
+    {
+      "title": "Overall System Health",
+      "type": "KPI Cards",
+      "metrics": [
+        "model_accuracy",
+        "failure_rate",
+        "total_machines"
+      ],
+      "description": "Key performance indicators for the entire system"
+    },
+    {
+      "title": "Machine Performance Overview",
+      "type": "Table",
+      "data_source": "machine_kpis",
+      "description": "Detailed performance metrics for each machine"
+    },
+    {
+      "title": "Daily Failure Trends",
+      "type": "Line Chart",
+      "data_source": "daily_kpis",
+      "x_axis": "date",
+      "y_axis": "daily_failures",
+      "description": "Trend of failures over time"
+    },
+    {
+      "title": "Maintenance Priority Matrix",
+      "type": "Scatter Plot",
+      "data_source": "maintenance_schedule",
+      "x_axis": "failure_probability",
+      "y_axis": "machine_id",
+      "color": "maintenance_priority",
+      "description": "Machines requiring maintenance based on failure probability"
+    },
+    {
+      "title": "Sensor Readings Distribution",
+      "type": "Histogram",
+      "data_source": "machine_kpis",
+      "metrics": [
+        "avg_temperature",
+        "avg_vibration",
+        "avg_pressure"
+      ],
+      "description": "Distribution of sensor readings across machines"
+    },
+    {
+      "title": "Quality vs Performance",
+      "type": "Scatter Plot",
+      "data_source": "machine_kpis",
+      "x_axis": "avg_quality",
+      "y_axis": "failure_rate",
+      "description": "Relationship between product quality and failure rates"
+    }
+  ],
+  "refresh_settings": {
+    "auto_refresh": true,
+    "refresh_interval": "1 hour",
+    "data_source_update": "daily"
+  },
+  "alerts": [
+    {
+      "name": "High Failure Probability",
+      "condition": "failure_probability >= 0.8",
+      "action": "Send email notification",
+      "description": "Alert when any machine has high failure probability"
+    },
+    {
+      "name": "Model Accuracy Drop",
+      "condition": "model_accuracy < 0.90",
+      "action": "Send email notification",
+      "description": "Alert when model accuracy drops below 90%"
+    }
+  ],
+  "last_updated": "2026-03-11 12:41:00"
+}
